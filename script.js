@@ -4,7 +4,6 @@
         for (let i = 1; i <= totalPaginas; i++) {
             const img = document.createElement('img');
             
-            // AGREGAMOS LA CARPETA "DOSSIER/" ANTES DEL NOMBRE
             img.src = "DOSSIER/PAG" + i + ".jpg"; 
             
             img.className = 'dossier-page';
@@ -17,3 +16,4 @@
 
             gallery.appendChild(img);
         }
+
