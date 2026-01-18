@@ -1,14 +1,25 @@
 const gallery = document.getElementById('gallery');
-const paginas = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+const totalPaginas = 5; // Prueba con pocas primero
 
-paginas.forEach(num => {
+for (let i = 1; i <= totalPaginas; i++) {
     const img = document.createElement('img');
-
-    img.src = "./DOSSIER/PAG" + i + ".jpg"; 
-    img.className = 'dossier-page';
-    img.alt = `Página ${num}`;
-    img.loading = "lazy";
+    const ruta = `./DOSSIER/PAG${i}.jpg`; // Usando la ruta relativa estándar
     
-    gallery.appendChild(img);
-});
+    console.log("Intentando cargar:", ruta);
+    
+    img.src = ruta;
+    img.className = 'dossier-page';
+    img.style.border = "2px solid red"; // Para ver si el cuadro aparece aunque no haya imagen
+    img.style.width = "100px";
+    img.style.height = "100px";
 
+    img.onerror = function() {
+        console.error("ERROR: No se encontró la imagen en: " + this.src);
+    };
+
+    img.onload = function() {
+        console.log("ÉXITO: Cargada " + ruta);
+    };
+
+    gallery.appendChild(img);
+}
