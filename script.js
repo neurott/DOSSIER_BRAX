@@ -4,7 +4,7 @@
         for (let i = 1; i <= totalPaginas; i++) {
             const img = document.createElement('img');
             
-            img.src = "/DOSSIER/PAG" + i + ".jpg"; 
+            img.src = "DOSSIER/PAG" + i + ".jpg"; 
             
             img.className = 'dossier-page';
             img.alt = "Página " + i;
@@ -16,3 +16,4 @@
 
             gallery.appendChild(img);
         }
+
