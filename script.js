@@ -1,25 +1,36 @@
 const gallery = document.getElementById('gallery');
-const totalPaginas = 5; // Prueba con pocas primero
 
-for (let i = 1; i <= totalPaginas; i++) {
-    const img = document.createElement('img');
-    const ruta = `./DOSSIER/PAG${i}.jpg`; // Usando la ruta relativa estándar
-    
-    console.log("Intentando cargar:", ruta);
-    
-    img.src = ruta;
-    img.className = 'dossier-page';
-    img.style.border = "2px solid red"; // Para ver si el cuadro aparece aunque no haya imagen
-    img.style.width = "100px";
-    img.style.height = "100px";
+async function cargarGaleria() {
+    let i = 1;
+    let seguirCargando = true;
 
-    img.onerror = function() {
-        console.error("ERROR: No se encontró la imagen en: " + this.src);
-    };
+    while (seguirCargando) {
+        // Creamos una promesa para saber si la imagen existe o no
+        const existe = await new Promise((resolve) => {
+            const img = new Image();
+            // USAMOS RUTA RELATIVA SIN SLASH AL PRINCIPIO
+            img.src = `DOSSIER/PAG${i}.jpg`; 
+            
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+        });
 
-    img.onload = function() {
-        console.log("ÉXITO: Cargada " + ruta);
-    };
-
-    gallery.appendChild(img);
+        if (existe) {
+            const nuevaImg = document.createElement('img');
+            nuevaImg.src = `DOSSIER/PAG${i}.jpg`;
+            nuevaImg.className = 'dossier-page';
+            nuevaImg.alt = `Página ${i}`;
+            nuevaImg.loading = "lazy";
+            gallery.appendChild(nuevaImg);
+            i++;
+        } else {
+            seguirCargando = false;
+            console.log(`Se detuvo en la página ${i}. Si no cargó nada, revisa el nombre de la carpeta.`);
+        }
+        
+        // Freno de seguridad por si acaso
+        if (i > 100) break;
+    }
 }
+
+cargarGaleria();
