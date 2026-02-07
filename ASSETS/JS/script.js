@@ -1,5 +1,5 @@
 const gallery = document.getElementById('gallery');
-const totalPaginas = 20;
+const totalPaginas = 22;
 
 for (let i = 1; i <= totalPaginas; i++) {
     const img = document.createElement('img');

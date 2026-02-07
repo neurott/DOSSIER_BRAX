@@ -1,4 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Krub&display=swap');
+
+
+header {
+    color: white;
+    text-align: center;
+}
+
 body {
+    font-family: 'Krub', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
     margin: 0;
     background: black;
     display: flex;
@@ -13,13 +24,8 @@ body {
     flex-direction: column;
 }
 
-header {
-    color: white;
-    text-align: center;
-}
-
 footer {
-    padding: 80px;
+    padding: 20px;
     text-align: center;
     font-size: 0.8rem;
     color: #666;
@@ -38,5 +44,13 @@ footer a {
 footer a:hover {
     opacity: 0.7;
     text-decoration: underline;
+
+}
+
+#gallery .caca {
+    width: 900px;
+    display: block;
+    margin: 0 auto;
+
 
 }
