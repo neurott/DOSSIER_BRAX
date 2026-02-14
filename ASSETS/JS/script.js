@@ -4,7 +4,7 @@ const totalPaginas = 22;
 for (let i = 1; i <= totalPaginas; i++) {
     const img = document.createElement('img');
 
-    img.src = "ASSETS/IMAGES/PAG" + i + ".jpg";
+    img.src = "assets/img/pag" + i + ".jpg";
 
     img.className = 'dossier-page';
     img.alt = "Página " + i;
